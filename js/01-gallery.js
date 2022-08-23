@@ -4,6 +4,7 @@ import { galleryItems } from './gallery-items.js';
 // console.log(galleryItems);
 
 //1. Создание и рендер разметки по массиву данных galleryItems и предоставленному шаблону элемента галереи.
+//2. Реализация делегирования на div.gallery и получение url большого изображения.
 {/* <div class="gallery__item">
   <a class="gallery__link" href="large-image.jpg">
     <img
@@ -38,3 +39,4 @@ function createGalleryCard (galleryItems) {
 }
 
 console.log(galleryContainer);
+
