@@ -5,7 +5,7 @@ import { galleryItems } from './gallery-items.js';
 
 
 //2. Реализация делегирования на div.gallery и получение url большого изображения.
-
+let instance = null
 const galleryContainer = document.querySelector('.gallery');
 const cardsMarkup = createGalleryCard (galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
@@ -34,6 +34,7 @@ console.log(galleryContainer);
 
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 
+
 function onGalleryContainerClick(evt) {
   // отмена действий браузера (переход на новую страницу - отмена)
   evt.preventDefault()
@@ -41,25 +42,26 @@ function onGalleryContainerClick(evt) {
   if (!evt.target.classList.contains('gallery__image')) {
     return;
   }
+
+
+
+
   const currentImgUrl = evt.target.dataset.source;
-const instance = basicLightbox.create(`
+let instance = basicLightbox.create(`
 <img class="modal__image" src="${currentImgUrl}"/>
 `);
 instance.show();
 }
-//открыть модалку
-function onOpenModal() {
-  window.addEventListener('keydown', onEskDown )
-}
-// закрыть модалку
-function onCloseModal() {
-  window.removeEventListener('keydown', onEskDown )
-}
 
-function onEskDown(evt) {
-  const ESC_KEY_CODE = 'Escape'
-  const isEscKey = evt.code === ESC_KEY_CODE;
-  if(isEscKey) {
-    onCloseModal();
-  }
-}
+
+
+
+// function onEskDown(evt) {
+//   const ESC_KEY_CODE = 'Escape'
+//   const isEscKey = evt.code === ESC_KEY_CODE;
+//   if(isEscKey) {
+//     instance.close();
+//     window.removeEventListener('keydown', onEskDown );
+//   }
+// }
+
