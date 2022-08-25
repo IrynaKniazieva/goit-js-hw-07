@@ -5,7 +5,7 @@ import { galleryItems } from './gallery-items.js';
 
 
 //2. Реализация делегирования на div.gallery и получение url большого изображения.
-let instance = null
+
 const galleryContainer = document.querySelector('.gallery');
 const cardsMarkup = createGalleryCard (galleryItems);
 galleryContainer.insertAdjacentHTML('beforeend', cardsMarkup);
