@@ -34,7 +34,6 @@ console.log(galleryContainer);
 
 galleryContainer.addEventListener('click', onGalleryContainerClick);
 
-
 function onGalleryContainerClick(evt) {
   // отмена действий браузера (переход на новую страницу - отмена)
   evt.preventDefault()
@@ -42,26 +41,21 @@ function onGalleryContainerClick(evt) {
   if (!evt.target.classList.contains('gallery__image')) {
     return;
   }
-
-
-
-
   const currentImgUrl = evt.target.dataset.source;
+  //модальное окно из библиотеки basicLightbox.
 let instance = basicLightbox.create(`
 <img class="modal__image" src="${currentImgUrl}"/>
 `);
 instance.show();
+window.addEventListener('keydown', onEskDown);
+// закрытие модального клавишей ESC
+function onEskDown(evt) {
+  const ESC_KEY_CODE = 'Escape'
+  const isEscKey = evt.code === ESC_KEY_CODE;
+  if(isEscKey) {
+    instance.close();
+    window.removeEventListener('keydown', onEskDown);
+  }
 }
-
-
-
-
-// function onEskDown(evt) {
-//   const ESC_KEY_CODE = 'Escape'
-//   const isEscKey = evt.code === ESC_KEY_CODE;
-//   if(isEscKey) {
-//     instance.close();
-//     window.removeEventListener('keydown', onEskDown );
-//   }
-// }
+}
 
